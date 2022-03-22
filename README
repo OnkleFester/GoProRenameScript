@@ -1,0 +1,23 @@
+/*First command Line 3*/
+
+get-childitem *.mp4 | rename-item -newname { [string]($_.name).substring(2) }
+
+
+/*Second command Lines 8 through 11*/
+
+Get-ChildItem *.mp4 | Rename-Item -NewName {
+
+    $_.Name -replace '(^.{2})(.*?)\.(.*$)','$2 - $1.$3'
+}
+
+
+/*NOTES
+Make sure you run these commands through powershell, on a hard drive folder containing your go pro files.
+Use windows explorer and navigate to the folder on your hard drive containing the Go Pro mp4 files.
+Hold Shift, right click in the folder space, and "Open Powershell Window Here".
+Do not run them directly on the SD Card folders.
+These commands are destructive, and cannot be undone.
+Use these commands at your own risk.
+I've only used these commmands a dozen times, so there may be unforseen circumstances that result in problems.
+I am not responsible for any lost files or data.
+End of NOTES*/
